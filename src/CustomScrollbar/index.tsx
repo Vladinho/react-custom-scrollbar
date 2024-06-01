@@ -7,8 +7,8 @@ import {
   VerticalScrollbarRoute,
   HorizontalScrollbarRoute,
 } from './styles';
-import useScrollbar from './hooks/useScrolbar';
-import useDrag from './hooks/useDrag';
+import useScrollbar from '../hooks/useScrolbar';
+import useDrag from '../hooks/useDrag';
 
 interface CustomScrollbarProps {
   children: React.ReactNode;
