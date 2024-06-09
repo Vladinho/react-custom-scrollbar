@@ -5,6 +5,9 @@
 
 `react-custom-scrollbar-package` is a React component that provides a customizable scrollbar. This component allows you to easily add custom scrollbars to your React applications, with support for vertical and horizontal scrollbars. It is built using TypeScript and styled-components, ensuring type safety and easy styling.
 
+[Demo - React Custom Scrollbar](https://vladinho.github.io/react-custom-scrollbar/)
+
+
 ## Installation
 
 To install the package, you can use npm or yarn:
