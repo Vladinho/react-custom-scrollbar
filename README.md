@@ -19,6 +19,15 @@ or
 yarn add react-custom-scrollbar-package
 ```
 
+## Props
+
+- **`children`** (`React.ReactNode`): The content to be wrapped by the custom scrollbar.
+- **`isVerticalHidden`** (`boolean`, default: `false`): Hide the vertical scrollbar.
+- **`isHorizontalHidden`** (`boolean`, default: `false`): Hide the horizontal scrollbar.
+- **`sx`** (`object`): Additional styles for the scrollbar container.
+- **`deps`** (`any[]`, default: `[]`): Dependencies to recalculate scrollbar visibility and dimensions.
+- **`cssClassPrefix`** (`string`, default: `'customScrollbar'`): Prefix for CSS classes applied to scrollbar elements.
+
 ## Usage
 
 Here is an example of how to use the `CustomScrollbar` component in your project:
