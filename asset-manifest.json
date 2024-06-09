@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-custom-scrollbar/static/css/main.e6c13ad2.css",
+    "main.js": "/react-custom-scrollbar/static/js/main.8114a76d.js",
+    "static/js/453.d3c504ca.chunk.js": "/react-custom-scrollbar/static/js/453.d3c504ca.chunk.js",
+    "index.html": "/react-custom-scrollbar/index.html",
+    "main.e6c13ad2.css.map": "/react-custom-scrollbar/static/css/main.e6c13ad2.css.map",
+    "main.8114a76d.js.map": "/react-custom-scrollbar/static/js/main.8114a76d.js.map",
+    "453.d3c504ca.chunk.js.map": "/react-custom-scrollbar/static/js/453.d3c504ca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.8114a76d.js"
+  ]
+}
