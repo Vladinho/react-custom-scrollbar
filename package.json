@@ -25,5 +25,30 @@
     "@types/react-dom": "^18.0.0",
     "styled-components": "^5.3.3",
     "@types/styled-components": "^5.1.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vladinho/react-custom-scrollbar"
+  },
+  "homepage": "https://github.com/Vladinho/react-custom-scrollbar#readme",
+  "keywords": [
+    "react",
+    "scrollbar",
+    "custom-scrollbar",
+    "react-component",
+    "react-scrollbar",
+    "custom-scrollbar-react",
+    "scrollbar-component",
+    "react-ui",
+    "react-plugin",
+    "ui-components",
+    "scroll",
+    "custom-scroll",
+    "react-scroll",
+    "scrollbar-styling",
+    "scrollbar-hook",
+    "scrollbar-customization"
+  ],
+  "author": "Vladislav Repkin",
+  "license": "MIT"
 }
