@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const useDrag = (containerRef: React.RefObject<HTMLDivElement>) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [scrollStart, setScrollStart] = useState({ x: 0, y: 0 });
-  const [draggingDirection, setDraggingDirection] = useState<string | null>(
-    null,
-  );
+  const [draggingDirection, setDraggingDirection] = useState<string | null>(null);
 
   const startDragging = (
-    e: React.MouseEvent | React.TouchEvent,
+    e: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent,
     direction: 'horizontal' | 'vertical',
   ) => {
     setIsDragging(true);
@@ -38,11 +36,9 @@ const useDrag = (containerRef: React.RefObject<HTMLDivElement>) => {
     const dy = clientY - dragStart.y;
 
     if (draggingDirection === 'horizontal') {
-      container.scrollLeft =
-        scrollStart.x + dx * (container.scrollWidth / container.clientWidth);
+      container.scrollLeft = scrollStart.x + dx * (container.scrollWidth / container.clientWidth);
     } else if (draggingDirection === 'vertical') {
-      container.scrollTop =
-        scrollStart.y + dy * (container.scrollHeight / container.clientHeight);
+      container.scrollTop = scrollStart.y + dy * (container.scrollHeight / container.clientHeight);
     }
 
     e.preventDefault();
@@ -54,23 +50,38 @@ const useDrag = (containerRef: React.RefObject<HTMLDivElement>) => {
   };
 
   useEffect(() => {
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    };
+
+    const handleTouchEnd = () => {
+      if (isDragging) {
+        stopDragging();
+      }
+    };
+
     if (isDragging) {
       window.addEventListener('mousemove', onDrag);
       window.addEventListener('mouseup', stopDragging);
-      window.addEventListener('touchmove', onDrag);
-      window.addEventListener('touchend', stopDragging);
+      window.addEventListener('touchmove', onDrag, { passive: false });
+      window.addEventListener('touchend', handleTouchEnd);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
     } else {
       window.removeEventListener('mousemove', onDrag);
       window.removeEventListener('mouseup', stopDragging);
       window.removeEventListener('touchmove', onDrag);
-      window.removeEventListener('touchend', stopDragging);
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchmove', handleTouchMove);
     }
 
     return () => {
       window.removeEventListener('mousemove', onDrag);
       window.removeEventListener('mouseup', stopDragging);
       window.removeEventListener('touchmove', onDrag);
-      window.removeEventListener('touchend', stopDragging);
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [isDragging]);
 
