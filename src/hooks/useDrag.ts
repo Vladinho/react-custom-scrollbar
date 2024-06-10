@@ -9,26 +9,33 @@ const useDrag = (containerRef: React.RefObject<HTMLDivElement>) => {
   );
 
   const startDragging = (
-    e: React.MouseEvent,
+    e: React.MouseEvent | React.TouchEvent,
     direction: 'horizontal' | 'vertical',
   ) => {
     setIsDragging(true);
     setDraggingDirection(direction);
-    setDragStart({ x: e.clientX, y: e.clientY });
+
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+    setDragStart({ x: clientX, y: clientY });
     setScrollStart({
       x: containerRef.current!.scrollLeft,
       y: containerRef.current!.scrollTop,
     });
+
     e.preventDefault();
   };
 
-  const onDrag = (e: MouseEvent) => {
+  const onDrag = (e: MouseEvent | TouchEvent) => {
     if (!isDragging) return;
 
     const container = containerRef.current!;
-    // const container = containerRef.current!.children[0];
-    const dx = e.clientX - dragStart.x;
-    const dy = e.clientY - dragStart.y;
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+    const dx = clientX - dragStart.x;
+    const dy = clientY - dragStart.y;
 
     if (draggingDirection === 'horizontal') {
       container.scrollLeft =
@@ -37,6 +44,7 @@ const useDrag = (containerRef: React.RefObject<HTMLDivElement>) => {
       container.scrollTop =
         scrollStart.y + dy * (container.scrollHeight / container.clientHeight);
     }
+
     e.preventDefault();
   };
 
@@ -49,14 +57,20 @@ const useDrag = (containerRef: React.RefObject<HTMLDivElement>) => {
     if (isDragging) {
       window.addEventListener('mousemove', onDrag);
       window.addEventListener('mouseup', stopDragging);
+      window.addEventListener('touchmove', onDrag);
+      window.addEventListener('touchend', stopDragging);
     } else {
       window.removeEventListener('mousemove', onDrag);
       window.removeEventListener('mouseup', stopDragging);
+      window.removeEventListener('touchmove', onDrag);
+      window.removeEventListener('touchend', stopDragging);
     }
 
     return () => {
       window.removeEventListener('mousemove', onDrag);
       window.removeEventListener('mouseup', stopDragging);
+      window.removeEventListener('touchmove', onDrag);
+      window.removeEventListener('touchend', stopDragging);
     };
   }, [isDragging]);
 

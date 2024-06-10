@@ -52,7 +52,8 @@ const CustomScrollbar: React.FC<CustomScrollbarProps> = ({
             className={`${cssClassPrefix}__vertical-thump`}
             ref={verticalScrollbarRef}
             height={verticalThumbHeight}
-            onMouseDown={(e: any) => startDragging(e, 'vertical')}
+            onMouseDown={(e: React.MouseEvent | React.TouchEvent) => startDragging(e, 'vertical')}
+            onTouchStart={(e: React.MouseEvent | React.TouchEvent,) => startDragging(e, 'vertical')}
           />
         </VerticalScrollbarRoute>
       )}
@@ -64,7 +65,8 @@ const CustomScrollbar: React.FC<CustomScrollbarProps> = ({
             className={`${cssClassPrefix}__horizontal-thump`}
             ref={horizontalScrollbarRef}
             width={horizontalThumbWidth}
-            onMouseDown={(e: any) => startDragging(e, 'horizontal')}
+            onMouseDown={(e: React.MouseEvent | React.TouchEvent) => startDragging(e, 'horizontal')}
+            onTouchStart={(e: React.MouseEvent | React.TouchEvent,) => startDragging(e, 'horizontal')}
           />
         </HorizontalScrollbarRoute>
       )}

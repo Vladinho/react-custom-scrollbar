@@ -5,7 +5,9 @@
   "main": "build/index.js",
   "scripts": {
     "start": "cd playground && npm start",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "link-package": "npm link && cd playground && npm link react-custom-scrollbar-package && npm install",
+    "build-for-playground": "rm -rf node_modules/react && rm -rf node_modules/react-dom && npm run build"
   },
   "peerDependencies": {
     "react": "^18.3.1",
