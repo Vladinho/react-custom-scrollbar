@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import {
   ScrollbarContainer,
   ScrollContent,
-  VerticalScrollbarThump,
-  HorizontalScrollbarThump,
+  VerticalScrollbarThumb,
+  HorizontalScrollbarThumb,
   VerticalScrollbarRoute,
   HorizontalScrollbarRoute,
 } from './styles';
@@ -48,8 +48,8 @@ const CustomScrollbar: React.FC<CustomScrollbarProps> = ({
       </ScrollContent>
       {showVerticalScrollbar && (
         <VerticalScrollbarRoute className={`${cssClassPrefix}__vertical-route`}>
-          <VerticalScrollbarThump
-            className={`${cssClassPrefix}__vertical-thump`}
+          <VerticalScrollbarThumb
+            className={`${cssClassPrefix}__vertical-thumb`}
             ref={verticalScrollbarRef}
             height={verticalThumbHeight}
             onMouseDown={(e: React.MouseEvent | React.TouchEvent) => startDragging(e, 'vertical')}
@@ -61,8 +61,8 @@ const CustomScrollbar: React.FC<CustomScrollbarProps> = ({
         <HorizontalScrollbarRoute
           className={`${cssClassPrefix}__vertical-route`}
         >
-          <HorizontalScrollbarThump
-            className={`${cssClassPrefix}__horizontal-thump`}
+          <HorizontalScrollbarThumb
+            className={`${cssClassPrefix}__horizontal-thumb`}
             ref={horizontalScrollbarRef}
             width={horizontalThumbWidth}
             onMouseDown={(e: React.MouseEvent | React.TouchEvent) => startDragging(e, 'horizontal')}
