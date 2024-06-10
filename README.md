@@ -69,13 +69,13 @@ const CustomStyledScrollbar = styled(CustomScrollbar)`
   &.customScrollbar__vertical-route {
     background-color: #e0e0e0;
   }
-  &.customScrollbar__vertical-thump {
+  &.customScrollbar__vertical-thumb {
     background-color: #888;
   }
   &.customScrollbar__horizontal-route {
     background-color: #e0e0e0;
   }
-  &.customScrollbar__horizontal-thump {
+  &.customScrollbar__horizontal-thumb {
     background-color: #888;
   }
 `;
